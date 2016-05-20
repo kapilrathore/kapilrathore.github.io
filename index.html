@@ -41,11 +41,16 @@
             <option value="userInterfaceIdiom">User Interface</option>
             <option value="identifierForVendor">Vendor ID</option>
         </select>
+        <h4 id="waiting">Waiting...</h4>
     <script>
         var headline = $("#headline");
         var selection = $("#selector");
+        var waiting = $("#waiting");
         function set_headline (text) {
             headline.text(text);
+        }
+        function set_waiting (text) {
+            waiting.text(text);
         }
         function call_native () {
             var prop = selection.val();
