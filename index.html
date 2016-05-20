@@ -29,14 +29,12 @@
             function set_headline (text) {
                 headline.text(text);
             }
-            function change_text () {
-                waiting.text("Done!");
+            function set_waiting (text) {
+                headline.text(text);
             }
             function call_native () {
                 var prop = selection.val();
-                set_headline("asked for " + prop + "...");
-                window.webkit.messageHandlers.observe.postMessage(prop);
-                change_text();
+                set_headline("asked for " + prop + "..."); window.webkit.messageHandlers.observe.postMessage(prop);
             }
             setTimeout(call_native, 1000);
             selection.on("change", call_native);
