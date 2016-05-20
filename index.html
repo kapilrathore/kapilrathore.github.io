@@ -42,10 +42,12 @@
             <option value="identifierForVendor">Vendor ID</option>
         </select>
         <h4 id="waiting">Waiting...</h4>
+        <button id="proceed">Proceed Now!</button>
     <script>
         var headline = $("#headline");
         var selection = $("#selector");
         var waiting = $("#waiting");
+        $("#proceed").hide();
         function set_headline (text) {
             headline.text(text);
         }
@@ -54,7 +56,8 @@
         }
         function call_native () {
             var prop = selection.val();
-           set_headline("asked for " + prop + "..."); window.webkit.messageHandlers.observe.postMessage(prop);
+            set_headline("asked for " + prop + "..."); window.webkit.messageHandlers.observe.postMessage(prop);
+            $("#proceed").show();
         }
         setTimeout(call_native, 1000);
         selection.on("change", call_native);
