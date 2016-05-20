@@ -5,39 +5,41 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>WKWebView</title>
-    <style type="text/css">
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            width: 95%;
-            margin: 50px auto;
-            font-family: "Helvetica Neue", Helvetica, sans-serif;
-        }
-
-        select {
-            width: 100%;
-            display: block;
-            margin-top: 2em;
-        }
-    </style>
     <script type="text/javascript">
-      var headline = $("#headline");
-      var selection = $("#next");
-      function set_headline (text) {
-          headline.text(text);
-      }
-      function call_native () {
-       window.webkit.messageHandlers.observe.postMessage();
-      }
-      setTimeout(call_native, 1000);
-      selection.on("click", call_native);
+        $(function () {
+            var headline = $("#headline");
+            var selection = $("#selector");
+            $('.btnn').prop("disabled", true);
+            function set_headline (text) {
+                headline.text(text);
+            }
+            function enable_btn () {
+                $('.btnn').prop("disabled", false);
+            }
+            function call_native () {
+                var prop = selection.val();
+               set_headline("asked for " + prop + "..."); window.webkit.messageHandlers.observe.postMessage(prop);
+               enable_btn();
+            }
+            setTimeout(call_native, 1000);
+            selection.on("change", call_native);
+
+            // Expose that function globally
+            window.call_native = call_native;
+
+        });
     </script>
 </head>
 <body>
-    <h2 id="headline">Disabled</h2>
-    <p id="next">Click to Enable</p>
+    <h2 id="headline">loading...</h2>
+    <select id="selector">
+        <option value="systemVersion" selected>iOS Version</option>
+        <option value="systemName">System Name</option>
+        <option value="name">Device Name</option>
+        <option value="model">Device Model</option>
+        <option value="userInterfaceIdiom">User Interface</option>
+        <option value="identifierForVendor">Vendor ID</option>
+    </select>
+    <button id="submit" class="btnn">Submit</button>
 </body>
 </html>
