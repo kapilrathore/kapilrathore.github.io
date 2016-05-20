@@ -43,8 +43,7 @@
         </select>
         <h4 id="waiting">Waiting...</h4>
         <button id="proceed">Proceed Now!</button>
-        <button id="postreq" onclick="makepost()">Make a Post Request</button>
-        <p id="postres">Post request response</p>
+        <p id="postres">Post request response will come here</p>
     <script>
         var headline = $("#headline");
         var selection = $("#selector");
@@ -55,9 +54,6 @@
         }
         function set_waiting (text) {
             waiting.text(text);
-        }
-        function makepost () {
-            window.webkit.messageHandlers.postrequest.postMessage();
         }
         function call_native () {
             var prop = selection.val();
