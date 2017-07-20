@@ -1,33 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
         <meta charset="utf-8">
-            <meta name="robots" content="noindex">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="robots" content="noindex">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        
+        <title>Kapil Rathore</title>
     </head>
     <body>
-        <script>
-            
-        window.webkit.messageHandlers.observe.postMessage("kapilrathore");
-        
-        open = function(verb, url, data, target) {
-            var form = document.createElement("form");
-            form.action = url;
-            form.method = verb;
-            form.target = target || "_self";
-            if (data) {
-                for (var key in data) {
-                    var input = document.createElement("textarea");
-                    input.name = key;
-                    input.value = typeof data[key] === "object" ? JSON.stringify(data[key]) : data[key];
-                    form.appendChild(input);
-                }
-            }
-            form.style.display = 'none';
-            document.body.appendChild(form);
-            form.submit();
-        };
-        </script>
+        <h1>HEY</h1>
     </body>
 </html>
